@@ -10,6 +10,7 @@ int GreenLED = 10 ;
 int RedLED = 9;
 
 void setup() {
+  pinMode (13, OUTPUT);
   pinMode (BlueLED, OUTPUT);
   pinMode (GreenLED, OUTPUT);
   pinMode (RedLED, OUTPUT);
@@ -18,9 +19,11 @@ void setup() {
 }
 
 void loop() {
-  delay(2000);
+  digitalWrite(13, LOW);
+  
+  delay(30000);
 
-  float h = dht.readHumidity();
+  int h = dht.readHumidity();
 
   float t = dht.readTemperature();
 
@@ -31,7 +34,7 @@ void loop() {
 
   Serial.print(F("Humidity: "));
   Serial.print(h);
-  Serial.print(F("%  Temperature: "));
+  Serial.print(F(" %  Temperature: "));
   Serial.print(t);
   Serial.print(F(" C "));
   Serial.println();
